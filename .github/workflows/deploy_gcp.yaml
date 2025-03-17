@@ -12,10 +12,6 @@ permissions:
 
 jobs:
   docker-release:
-    if: |
-      (github.event_name == 'push' && github.ref == 'refs/heads/dev') ||
-      (github.event_name == 'push' && github.ref == 'refs/heads/master')
     uses: 0xPolygon/pipelines/.github/workflows/gcp_pipeline_release_image.yaml@main
     with:
-      image_name: proof-generator-api
-      environment: ${{ (github.ref == 'refs/heads/master' && 'prod') || (github.ref == 'refs/heads/dev' && 'staging') }}
+      image_name: ${{ github.ref == 'refs/heads/main' && 'proof-generator-api-prod' || 'proof-generator-api-staging' }}
