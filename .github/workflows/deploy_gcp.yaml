@@ -14,4 +14,4 @@ jobs:
   docker-release:
     uses: 0xPolygon/pipelines/.github/workflows/gcp_pipeline_release_image.yaml@main
     with:
-      image_name: ${{ github.ref == 'refs/heads/main' && 'proof-generator-api-prod' || 'proof-generator-api-staging' }}
+      image_name: ${{ github.ref == 'refs/heads/main' && 'proof-generation-api-prod' || 'proof-generation-api-staging' }}
