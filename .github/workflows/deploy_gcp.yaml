@@ -11,11 +11,13 @@ permissions:
   id-token: write
 
 jobs:
+  generate-version:
+    uses: 0xPolygon/pipelines/.github/workflows/generate_version.yaml@main
+
   docker-release:
-    if: |
-      (github.event_name == 'push' && github.ref == 'refs/heads/dev') ||
-      (github.event_name == 'push' && github.ref == 'refs/heads/master')
+    needs:
+      - generate-version
     uses: 0xPolygon/pipelines/.github/workflows/gcp_pipeline_release_image.yaml@main
     with:
-      image_name: proof-generator-api
-      environment: ${{ (github.ref == 'refs/heads/master' && 'prod') || (github.ref == 'refs/heads/dev' && 'staging') }}
+      image_name: ${{ github.ref == 'refs/heads/main' && 'proof-generation-api-prod' || 'proof-generation-api-staging' }}
+      image_tag: ${{ needs.generate-version.outputs.version }}
