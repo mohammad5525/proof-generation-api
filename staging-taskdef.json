@@ -11,9 +11,10 @@
                 "logDriver": "awsfirelens",
                 "options": {
                     "Name": "datadog",
-                    "Host": "http-intake.logs.datadoghq.com",
+                    "Host": "http-intake.logs.datadoghq.eu",
                     "dd_service": "proof-generator-api-staging",
                     "dd_source": "nodejs",
+                    "dd_tags": "account_number:070528468658",
                     "TLS": "on",
                     "provider": "ecs"
                 },
@@ -152,8 +153,8 @@
     ],
     "volumes": [],
     "networkMode": "awsvpc",
-    "memory": "2048",
-    "cpu": "1024",
+    "memory": "512",
+    "cpu": "256",
     "executionRoleArn": "arn:aws:iam::070528468658:role/proof-generator-staging-TaskRole",
     "family": "proof-generator-staging-taskdefinition",
     "taskRoleArn": "arn:aws:iam::070528468658:role/proof-generator-staging-TaskRole",
