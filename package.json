@@ -25,7 +25,7 @@
     "dependencies": {
         "@maticnetwork/maticjs": "^3.7.7",
         "@maticnetwork/maticjs-web3": "^1.0.2",
-        "compression": "^1.7.4",
+        "compression": "^1.8.1",
         "cors": "^2.8.5",
         "dotenv": "^16.0.3",
         "esm": "^3.2.25",
